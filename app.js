@@ -94,3 +94,19 @@ subMenuEl.style.top = "0";
         subMenuEl.appendChild(aElement);
     })
  }
+
+ subMenuEl.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if(event.target.tagName !== "A") return;
+
+    console.log("Submenu Link clicked", event.target.textContent);
+
+    subMenuEl.style.top = '0'
+
+    document.querySelectorAll("#top-menu a").forEach(a=>a.classList.remove("active"))
+
+    mainEl.innerHTML='<h1>${event.target.textContent}<h1>';
+    
+ });
+ 

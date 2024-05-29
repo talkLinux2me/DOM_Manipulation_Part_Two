@@ -60,4 +60,16 @@ subMenuEl.classList.add("flex-around");
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
 
+ const topMenuLinks = topMenuEl.querySelectorAll ("a");
 
+ topMenuEl.addEventListener("click", ()=>{
+    event.preventDefault();
+    if(event.target.tagName !== "A") return;
+    const linkText = event.target.textContent.toLowerCase()
+    const linkObject  = menuLinks.find((link) => link.text === linkText)
+
+    if (event.target.classList.contains("active")){
+        event.target.classlist.remove("active")
+        subMenuEl.style.top = "0"
+    }
+ })

@@ -43,3 +43,8 @@ menuLinks.forEach((link) => {
     //appended to topmenu
     topMenuEl.appendChild(aElement);
 });
+
+const subMenuEl = document.querySelector("#sub-menu");
+subMenuEl.style.height = "100%";
+subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+subMenuEl.classList.add("flex-around")

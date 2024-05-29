@@ -69,7 +69,28 @@ subMenuEl.style.top = "0";
     const linkObject  = menuLinks.find((link) => link.text === linkText)
 
     if (event.target.classList.contains("active")){
-        event.target.classlist.remove("active")
-        subMenuEl.style.top = "0"
+        event.target.classlist.remove("active");
+        subMenuEl.style.top = "0";
+    } else{
+        document.querySelectorAll("#top-menu a")
+        .forEach((a) => a.classlist.add("active"));
+        event.target.classList.add("active");
+        if (linkObject.subLinks){
+            subMenuEl.style.top = "100%";
+            buildSubmenu(linkObject.subLinks)
+        }else{
+            subMenuEl.style.top = "0";
+        }
     }
- })
+ });
+
+ function buildSubmenu(sublinks){
+    subMenuEl.innerHTML = ""
+
+    sublinks.forEach((link)=>{
+        const aElement = document.createElement("a");
+        aElement.href = link.ref
+        aElement.textContent = link.text
+        subMenuEl.appendChild(aElement);
+    })
+ }
